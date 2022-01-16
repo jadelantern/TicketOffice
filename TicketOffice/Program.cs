@@ -15,6 +15,8 @@
 List<Transaction> transactions = new List<Transaction>();
 List<CustomerInfo> allCustomerInfo = new List<CustomerInfo>();
 
+
+
 Console.WriteLine("What would you like to purchase?");
 string ticketName = Console.ReadLine();
 Console.WriteLine("You typed in: " + ticketName);
@@ -29,15 +31,17 @@ if (yesReponces.Contains(confirmTickets))
 {
     Console.WriteLine("Fantastic! Your Purchase has been confirmed! You are all set!");
 
+    // here storing which customer made THIS transaction
+
     Console.WriteLine("Please enter your name: ");
-    string name = Console.ReadLine();
     CustomerInfo customerInfo = new CustomerInfo();
-    customerInfo.name = name;
+    customerInfo.name = Console.ReadLine();
     allCustomerInfo.Add(customerInfo);
 
     Transaction transaction = new Transaction();
     transaction.ticketName = ticketName;
     transactions.Add(transaction);
+    transaction.price = 10;
 
 } 
 else if (noResponces.Contains(confirmTickets))
