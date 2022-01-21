@@ -2,4 +2,5 @@
 {
     public string ticketName;
     public int price;
+    public CustomerInfo customer;
 }

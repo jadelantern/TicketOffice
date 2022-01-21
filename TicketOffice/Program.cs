@@ -12,43 +12,71 @@
  * 
  * */
 
+using System.Runtime.CompilerServices;
+
 List<Transaction> transactions = new List<Transaction>();
 List<CustomerInfo> allCustomerInfo = new List<CustomerInfo>();
-
-
-
-Console.WriteLine("What would you like to purchase?");
-string ticketName = Console.ReadLine();
-Console.WriteLine("You typed in: " + ticketName);
-Console.WriteLine("Is this correct?");
-string confirmTickets = Console.ReadLine();
-
 
 List<string> yesReponces = new List<string>() { "Yes", "Y", "yes", "y"};
 List<string> noResponces = new List<string>() { "No", "N", "no", "n"};
 
-if (yesReponces.Contains(confirmTickets))
+Console.WriteLine("Welcome to the Ticket Office!");
+string ticketName = GetTicketName();
+bool confirmed = ConfrimTicket(ticketName);
+if (confirmed == true)
 {
-    Console.WriteLine("Fantastic! Your Purchase has been confirmed! You are all set!");
+    Console.WriteLine("Your ticket has been purchased");
+}
+else 
+{ 
+    Console.WriteLine("You have not purchased a ticket"); 
+}
 
-    // here storing which customer made THIS transaction
 
-    Console.WriteLine("Please enter your name: ");
-    CustomerInfo customerInfo = new CustomerInfo();
-    customerInfo.name = Console.ReadLine();
-    allCustomerInfo.Add(customerInfo);
 
+
+string GetTicketName()
+{
+    Console.WriteLine("What would you like to purchase?");
+    string ticketName = Console.ReadLine();
+    return ticketName;
+}
+
+
+bool ConfrimTicket(string ticketName)
+{
+    Console.WriteLine("You typed in: " + ticketName);
+    Console.WriteLine("Is this correct?");
+    string confirmTickets = Console.ReadLine();
+
+    if (yesReponces.Contains(confirmTickets))
+    {
+        Console.WriteLine("Your Purchase has been confirmed!");
+        return true;
+    }
+    else if (noResponces.Contains(confirmTickets))
+    {
+        Console.WriteLine("Your responce was 'No'. No ticket was confirmed");
+        return false;
+    }
+    else
+    {
+        Console.WriteLine("You did not enter a 'Yes' or 'No' responce");
+        return false;
+    }
+}
+
+
+Transaction CreateTransaction(string ticketName)
+{
     Transaction transaction = new Transaction();
     transaction.ticketName = ticketName;
     transactions.Add(transaction);
     transaction.price = 10;
 
-} 
-else if (noResponces.Contains(confirmTickets))
-{
-    Console.WriteLine("Lets try again");
-}
-else
-{
-    Console.WriteLine("You have made and incorrect selection");
+    Console.WriteLine("Please enter your name: ");
+    transaction.customer = new CustomerInfo();
+    transaction.customer.name = Console.ReadLine();
+    allCustomerInfo.Add(transaction.customer);
+    return transaction;
 }
