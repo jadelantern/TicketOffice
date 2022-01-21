@@ -6,7 +6,7 @@ This app encludes all the steps in a working Ticket Office. It has examples of c
 ## Expectations
 With this project I had these expectations:
 
-• Expand my knowledge in working with lists.
+• Expand my knowledge in working with lists and classes.
 
 • Gain more experience with classes overall.
 
@@ -14,10 +14,16 @@ With this project I had these expectations:
 
 • Gain experience capturing infomation from users.
 
-• Gain more experience with JSON
-
 ## Addressing Expectations
 
 Upon creation of this project, I learned:
 
-• How to capture information from a user
+• How to capture information from a user.
+
+• How to call a class from another class.
+
+• How to refactor code.
+
+• More practice creating functional and useful methods.
+
+• More practice using lists.
